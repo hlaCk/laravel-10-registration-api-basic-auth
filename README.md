@@ -21,6 +21,10 @@ composer create-project --prefer-dist hlack/laravel-10-registration-api-basic-au
 ## Setup
 
 ```bash
+php artisan key:generate
+```
+
+```bash
 php artisan migrate:fresh --seed
 ```
 
