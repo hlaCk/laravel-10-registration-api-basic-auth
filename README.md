@@ -7,6 +7,8 @@
 
 [Download Vedio](https://drive.google.com/file/d/1lLmoKhhlEascQ0epGPHFSb_1fLLzaMog/view?usp=share_link)
 
+[Or Download Vedio](https://github.com/hlaCk/laravel-10-registration-api-basic-auth/raw/master/Api%20Using%20Basic%20Auth%20For%20Auth%20Operations.mp4)
+
 
 ---
 
