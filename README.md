@@ -1,6 +1,15 @@
 ## Api Using Basic Auth For Auth Operations.
 #### Tiny Laravel Backend Api Using Basic Auth For User Registration & Auth **[Custom]**.
 
+## Video:
+
+[Watch Vedio](https://watch.screencastify.com/v/GAsToW3rdF28oSVbo2VW)
+
+[Download Vedio](https://drive.google.com/file/d/1lLmoKhhlEascQ0epGPHFSb_1fLLzaMog/view?usp=share_link)
+
+
+---
+
 
 ## Installation
 
