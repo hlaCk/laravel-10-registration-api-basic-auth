@@ -1,0 +1,9 @@
+
+  GET|HEAD       mobile/email/verify/{id}/{hash} .................................... verification.verify › AuthController@verify
+  GET|HEAD       mobile/login ...................................................................... login › AuthController@login
+  GET|HEAD       mobile/logout ................................................................... logout › AuthController@logout
+  ANY            mobile/register ............................................................. register › AuthController@register
+  GET|HEAD       mobile/user ......................................................................... user › AuthController@user
+
+                                                                                                               Showing [5] routes
+

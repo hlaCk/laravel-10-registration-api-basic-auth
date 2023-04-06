@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
@@ -29,26 +28,41 @@ class AuthController extends Controller
         User::query()
             // ->whereNotNull('created_at')
             ->where('created_at', "<", Carbon::now()->subMinutes(Config::get('auth.verification.expire', 60)))
-            ->where(fn($q)=>$q->whereNull('email_verified_at')->orWhereNull('email2_verified_at'))
+            ->where(fn($q) => $q->where(fn($q2) => $q2->whereNotNull('email')->whereNull('email_verified_at'))
+                                ->orWhere(fn($q2) => $q2->whereNotNull('email2')->whereNull('email2_verified_at')))
             ->delete();
 
         $data = $request->validate([
                                        'email' => [
                                            'required',
                                            'string',
-                                           'email:fqn',
+                                           'email:filter',
                                            Rule::unique('users', 'email')
-                                               ->where(fn($q) => $q->where('created_at', "<", Carbon::now()->subMinutes(Config::get('auth.verification.expire', 60)))),
+                                               ->where(function($q) {
+                                                   return $q->where('created_at', "<", Carbon::now()->subMinutes(Config::get('auth.verification.expire', 60)))
+                                                            ->where(function($q2) {
+                                                                return $q2->where(fn($q3) => $q3->whereNull('email_verified_at')->whereNotNull('email'))
+                                                                          ->orWhere(fn($q4) => $q4->whereNull('email2_verified_at')->whereNotNull('email2'));
+                                                            });
+                                               }),
                                        ],
-                                       'email2' => [ 'nullable', 'string', 'email:fqn' ],
+                                       'email2' => [ 'nullable', 'string', 'email:filter' ],
                                        'password' => [ 'required', 'string' ],
                                    ]);
 
         $data[ 'password' ] = bcrypt($data[ 'password' ]);
+        User::query()
+            ->where(function($q) use ($data) {
+                $q = $q->where(fn($q2) => $q2->where('email', $data[ 'email' ])->whereNull('email_verified_at'));
+                if( $data[ 'email2' ] ?? false ) {
+                    $q = $q->where(fn($q2) => $q2->where('email2', $data[ 'email2' ])->whereNull('email2_verified_at'));
+                }
 
-        User::query()->where(fn($q)=>$q->where('email', $data[ 'email' ])->orWhere('email2', $data[ 'email2' ]))
-                     ->where(fn($q)=>$q->whereNull('email_verified_at')->orWhereNull('email2_verified_at'))
-                     ->delete();
+                return $q;
+            })
+            ->get()
+            ->each
+            ->delete();
 
         /** @var User $user */
         $user = User::create($data);
@@ -103,7 +117,7 @@ class AuthController extends Controller
 
         return Response::make(
             1,
-            $user?->only('id','app_token')
+            $user?->only('id', 'app_token')
         );
     }
 

@@ -1,19 +1,41 @@
 ## Api Using Basic Auth For Auth Operations.
-
-
-> Tiny Laravel Backend Api Using Basic Auth For User Registration & Auth **[Custom]**.
+#### Tiny Laravel Backend Api Using Basic Auth For User Registration & Auth **[Custom]**.
 
 
 ## Installation
+
+> You can download the repository as ZIP file from here:
+>
+> [**Github Link**](https://github.com/hlaCk/laravel-10-registration-api-basic-auth)
+>
+> if you download it you must run: `composer install`
+
+**OR**
 
 ```bash
 composer create-project --prefer-dist hlack/laravel-10-registration-api-basic-auth
 ```
 
+---
+
 ## Setup
 
 ```bash
 php artisan migrate:fresh --seed
+```
+
+---
+
+## Browse local
+
+```bash
+php artisan serve
+```
+
+## Urls list
+
+```bash
+php artisan route:list --path=mobile
 ```
 
 ## License

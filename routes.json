@@ -1,0 +1,32 @@
+[
+    {
+        "method": "GET|HEAD",
+        "uri": "mobile/email/verify/{id}/{hash}",
+        "name": "verification.verify",
+        "action": "App\\Http\\Controllers\\AuthController@verify"
+    },
+    {
+        "method": "GET|HEAD",
+        "uri": "mobile/login",
+        "name": "login",
+        "action": "App\\Http\\Controllers\\AuthController@login"
+    },
+    {
+        "method": "GET|HEAD",
+        "uri": "mobile/logout",
+        "name": "logout",
+        "action": "App\\Http\\Controllers\\AuthController@logout"
+    },
+    {
+        "method": "GET|HEAD|POST|PUT|PATCH|DELETE|OPTIONS",
+        "uri": "mobile/register",
+        "name": "register",
+        "action": "App\\Http\\Controllers\\AuthController@register"
+    },
+    {
+        "method": "GET|HEAD",
+        "uri": "mobile/user",
+        "name": "user",
+        "action": "App\\Http\\Controllers\\AuthController@user"
+    }
+]
