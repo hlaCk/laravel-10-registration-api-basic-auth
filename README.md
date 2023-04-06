@@ -3,11 +3,11 @@
 
 ## Video:
 
-[Watch Vedio](https://watch.screencastify.com/v/GAsToW3rdF28oSVbo2VW)
+[Watch Video](https://watch.screencastify.com/v/GAsToW3rdF28oSVbo2VW)
 
-[Download Vedio](https://drive.google.com/file/d/1lLmoKhhlEascQ0epGPHFSb_1fLLzaMog/view?usp=share_link)
+[Download Video](https://drive.google.com/file/d/1lLmoKhhlEascQ0epGPHFSb_1fLLzaMog/view?usp=share_link)
 
-[Or Download Vedio](https://github.com/hlaCk/laravel-10-registration-api-basic-auth/raw/master/Api%20Using%20Basic%20Auth%20For%20Auth%20Operations.mp4)
+[Or Download Video](https://github.com/hlaCk/laravel-10-registration-api-basic-auth/raw/master/Api%20Using%20Basic%20Auth%20For%20Auth%20Operations.mp4)
 
 
 ---
